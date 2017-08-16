@@ -1,0 +1,81 @@
+{
+  'parser': 'babel-eslint',
+  'parserOptions': {
+    'ecmaFeatures': {
+      generators: true,
+      experimentalObjectRestSpread: true
+    },
+    sourceType: 'module',
+    'allowImportExportEverywhere': false
+  },
+  'extends': ['airbnb'],
+  'settings': {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx']
+      }
+    },
+    'import/extensions': ['.js', '.jsx'],
+    'import/ignore': ['node_modules', 'flow-typed', '\\.(css|styl|svg|json)$']
+  },
+  'env': {
+    'browser': true,
+    'jest': true
+  },
+  'rules': {
+    'no-shadow': 0,
+    'no-plusplus': 0,
+    'no-restricted-syntax': 0,
+    'no-return-assign': 0,
+    'no-nested-ternary': 0,
+    'no-unused-expressions': 0,
+    'consistent-return': 0,
+    'one-var': 0,
+    'one-var-declaration-per-line': 0,
+    'func-names': 0,
+    'no-use-before-define': 0,
+    'no-param-reassign': 0,
+    'react/prop-types': 0,
+    'react/no-render-return-value': 0,
+    'no-confusing-arrow': 0,
+    'no-multi-assign': 0,
+    'camelcase': 1,
+    'prefer-template': 0,
+    'newline-per-chained-call': 0,
+    'react/no-array-index-key': 1,
+    'global-require': 0,
+    'react/jsx-indent': 1,
+    'dot-notation': 1,
+    'import/no-named-default': 1,
+    'no-unused-vars': 1,
+    'import/no-unresolved': 1,
+    'import/prefer-default-export': 0,
+    'semi': [2, 'always'],
+    'jsx-quotes': [2, 'prefer-single'],
+    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
+    'react/prefer-stateless-function': 0,
+    'jsx-a11y/no-noninteractive-tabindex': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'spaced-comment': [2, 'always', { markers: ['?'] }],
+    'arrow-parens': 0,
+    'brace-style': [2, '1tbs', { 'allowSingleLine': true }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        'devDependencies': true,
+        'optionalDependencies': true,
+        'peerDependencies': true
+      }
+    ],
+    'comma-dangle': [
+      2,
+      {
+        'arrays': 'never',
+        'objects': 'never',
+        'imports': 'never',
+        'exports': 'never',
+        'functions': 'never'
+      }
+    ]
+  }
+}

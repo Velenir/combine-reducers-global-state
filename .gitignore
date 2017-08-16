@@ -1,0 +1,7 @@
+node_modules
+*.log
+.eslintcache
+build
+lib
+es
+coverage
