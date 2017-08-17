@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/Velenir/combine-reducers-global-state.svg?branch=master)](https://travis-ci.org/Velenir/combine-reducers-global-state) [![npm version](https://badge.fury.io/js/combine-reducers-global-state.svg)](https://badge.fury.io/js/combine-reducers-global-state) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![dependencies Status](https://david-dm.org/velenir/combine-reducers-global-state/status.svg)](https://david-dm.org/velenir/combine-reducers-global-state) [![devDependencies](https://david-dm.org/velenir/combine-reducers-global-state/dev-status.svg)](https://david-dm.org/velenir/combine-reducers-global-state?type=dev) [![Greenkeeper badge](https://badges.greenkeeper.io/Velenir/combine-reducers-global-state.svg)](https://greenkeeper.io/) [![codecov](https://codecov.io/gh/Velenir/combine-reducers-global-state/branch/master/graph/badge.svg)](https://codecov.io/gh/Velenir/combine-reducers-global-state) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/velenir/combine-reducers-global-state/blob/master/LICENSE)
+
 # combine-reducers-global-state
 
-A substitute for the default **combineReducers** function that comes with **redux**, aiming to solve the problem of cross-state access in local slice reducers. It passes `globalState` as the third argument to reducers, making it available along the local state slice.
+A substitute for the default **combineReducers** function that comes with **redux**, aiming to solve the problem of cross-state access in local slice reducers. It passes `globalState` as the third argument to reducers, making it available along with the local state slice.
  `globalState` here is the whole top-level state returned from `store.getState()` before it is sliced inside the `combineReducer`.
 
 ## Usage
@@ -46,7 +48,8 @@ Reducers that make use of global state may look like this:
 ```js
 // reducers.js
 
-const getAllIdsSelector = gState => Object.keys(gState);
+// selector that returns all item ids
+const getAllIds = gState => Object.keys(gState);
 
 // controls which items are currently on display
 export const displayReducer = (state = [], action, globalState) => {
@@ -59,7 +62,7 @@ export const displayReducer = (state = [], action, globalState) => {
       return state.filter(id => id !== action.payload.id);
     //  add all available itemsReducer
     case 'ADD_ALL_ITEMS':
-      return getAllIdsSelector(globalState);
+      return getAllIds(globalState);
     //  remove all displayed items
     case 'REMOVE_ALL_ITEMS':
       return [];
@@ -69,7 +72,8 @@ export const displayReducer = (state = [], action, globalState) => {
 };
 
 
-const getItemByIdSelector = (gState, id) => gState.items[id];
+// selector that returns one item with given id
+const getItemById = (gState, id) => gState.items[id];
 
 // edits properties of an individual item
 export const editingReducer = (state = {}, action, globalState) => {
@@ -83,7 +87,7 @@ export const editingReducer = (state = {}, action, globalState) => {
       const { id } = action.payload;
       return {
         ...state,
-        [id]: getItemByIdSelector(globalState, id)
+        [id]: getItemById(globalState, id)
       };
     }
     // changes properties of an item inside the editing list
@@ -105,7 +109,8 @@ export const editingReducer = (state = {}, action, globalState) => {
 };
 
 
-const getEditingItemByIdSelector = (gState, id) => gState.editing[id];
+// selector that returns an item being edited with given id
+const getEditingItemById = (gState, id) => gState.editing[id];
 
 // controls items stock
 export const itemsReducer = (state = {}, action, globalState) => {
@@ -116,7 +121,7 @@ export const itemsReducer = (state = {}, action, globalState) => {
       const { id } = action.payload;
       return {
         ...state,
-        [id]: { ...state[id], ...getEditingItemByIdSelector(globalState, id) }
+        [id]: { ...state[id], ...getEditingItemById(globalState, id) }
       };
     }
     default:
