@@ -1,7 +1,7 @@
 {
   "name": "combine-reducers-global-state",
-  "version": "1.0.0",
-  "description": "standard combineReducers but with global state passed through to individual reducers",
+  "version": "0.0.0-development",
+  "description": "Like combineReducers that comes with redux but with global state passed through to individual reducers",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -17,12 +17,20 @@
     "lint": "eslint src/ test/ --cache",
     "test": "cross-env BABEL_ENV=commonjs jest",
     "test:watch": "yarn test -- --watch",
-    "test:cov": "yarn test -- --coverage",
+    "test:coverage": "yarn test -- --coverage",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "babel src --out-dir es",
     "build": "yarn run build:es && yarn run build:commonjs",
-    "prepublish": "yarn test"
+    "prepublish": "yarn test",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "keywords": [
+    "redux",
+    "combine",
+    "reducer",
+    "global state"
+  ],
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
@@ -40,7 +48,17 @@
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "flow-bin": "^0.53.0",
-    "jest": "^20.0.4"
+    "jest": "^20.0.4",
+    "semantic-release": "^7.0.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Velenir/combine-reducers-global-state.git"
+  }
 }

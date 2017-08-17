@@ -1,0 +1,25 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '8'
+  - '7'
+  - '6'
+  - '4'
+before_install:
+  - npm i -g yarn
+script:
+  - yarn lint
+  - yarn test:coverage -- --silent
+after_success:
+  - yarn semantic-release
+after_script:
+  - bash <(curl -s https://codecov.io/bash)
+branches:
+  only:
+  - master
+- /^greenkeeper/.*$/
