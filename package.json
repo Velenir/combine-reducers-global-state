@@ -29,7 +29,9 @@
     "redux",
     "combine",
     "reducer",
-    "global state"
+    "global-state",
+    "global",
+    "state"
   ],
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -53,6 +55,9 @@
     "semantic-release": "^7.0.1"
   },
   "dependencies": {},
+  "engines": {
+    "node": ">=4"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
