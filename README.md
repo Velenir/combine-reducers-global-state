@@ -2,7 +2,8 @@
 
 # combine-reducers-global-state
 
-A substitute for the default **combineReducers** function that comes with **redux**, aiming to solve the problem of cross-state access in local slice reducers. It passes `globalState` as the third argument to reducers, making it available along with the local state slice.
+A substitute for the default **combineReducers** function that comes with **redux**, aiming to solve the problem of cross-state access in local slice reducers. This **combineReducers** implementation passes `globalState` as the third argument to reducers, making it available along with the local state slice.
+
  `globalState` here is the whole top-level state returned from `store.getState()` before it is sliced inside the `combineReducer`.
 
 ## Usage
