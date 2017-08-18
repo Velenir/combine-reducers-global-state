@@ -21,7 +21,7 @@
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "babel src --out-dir es",
     "build": "yarn run build:es && yarn run build:commonjs",
-    "prepublish": "yarn test",
+    "prepublish": "yarn build",
     "commit": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
