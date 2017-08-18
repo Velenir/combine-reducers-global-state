@@ -88,7 +88,7 @@ export const editingReducer = (state = {}, action, globalState) => {
       const { id } = action.payload;
       return {
         ...state,
-        [id]: getItemById(globalState, id)
+        [id]: { ...getItemById(globalState, id) }
       };
     }
     // changes properties of an item inside the editing list
