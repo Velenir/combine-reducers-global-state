@@ -6,6 +6,18 @@ A substitute for the default **combineReducers** function that comes with **redu
 
  `globalState` here is the whole top-level state returned from `store.getState()` before it is sliced inside the `combineReducer`.
 
+## Installation
+
+```shell
+yarn add combine-reducers-global-state
+```
+
+or
+
+```shell
+npm install --save combine-reducers-global-state
+```
+
 ## Usage
 
 For example, given a store state at some point:
@@ -61,7 +73,7 @@ export const displayReducer = (state = [], action, globalState) => {
     //  remove an item
     case 'REMOVE_ITEM':
       return state.filter(id => id !== action.payload.id);
-    //  add all available itemsReducer
+    //  add all available items
     case 'ADD_ALL_ITEMS':
       return getAllIds(globalState);
     //  remove all displayed items
