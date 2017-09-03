@@ -115,7 +115,13 @@ export const editingReducer = (state = {}, action, globalState) => {
     //  removes an item from the editing list
     case 'SAVE_EDIT_ITEM':
     case 'CANCEL_EDIT_ITEM':
-      return { ...state, [action.payload.id]: undefined };
+    {
+      const { id } = action.payload;
+      return Object.keys(state).reduce((acc, itemId) => {
+        if (itemId !== id) acc[itemId] = state[itemId];
+        return acc;
+      }, {})
+    }
     default:
       return state;
   }
@@ -144,7 +150,7 @@ export const itemsReducer = (state = {}, action, globalState) => {
 
 ```
 
-> If your selectors make time consuming calculations, it is recommended to use memoization, for example with the help of a third-party library such as [reselect](https://github.com/reactjs/reselect).
+> If your selectors make time consuming calculations, it is recommended to use memoization, for example with the help of a third-party library, such as [reselect](https://github.com/reactjs/reselect).
 
 Finally, `combineReducer` makes `globalState` available to all reducers passed to it:
 
