@@ -150,7 +150,7 @@ export const itemsReducer = (state = {}, action, globalState) => {
 
 ```
 
-> If your selectors make time consuming calculations, it is recommended to use memoization, for example with the help of a third-party library, such as [reselect](https://github.com/reactjs/reselect).
+> If your selectors make time consuming calculations or produce new output on each invocation with the same input, it is recommended to use memoization, for example with the help of a third-party library, such as [reselect](https://github.com/reactjs/reselect).
 
 Finally, `combineReducer` makes `globalState` available to all reducers passed to it:
 
