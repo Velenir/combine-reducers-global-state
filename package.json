@@ -52,7 +52,7 @@
     "eslint-plugin-react": "^7.1.0",
     "flow-bin": "^0.54.0",
     "jest": "^21.0.0",
-    "semantic-release": "^7.0.1"
+    "semantic-release": "^8.0.0"
   },
   "dependencies": {},
   "engines": {
