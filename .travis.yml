@@ -12,6 +12,8 @@ node_js:
   - '4'
 before_install:
   - npm i -g yarn
+install:
+  - yarn install --ignore-engine
 script:
   - yarn lint
   - yarn test:coverage -- --silent
