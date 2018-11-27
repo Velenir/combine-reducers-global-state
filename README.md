@@ -62,7 +62,7 @@ Reducers that make use of global state may look like this:
 // reducers.js
 
 // selector that returns all item ids
-const getAllIds = gState => Object.keys(gState);
+const getAllIds = gState => Object.keys(gState.items);
 
 // controls which items are currently on display
 export const displayReducer = (state = [], action, globalState) => {
